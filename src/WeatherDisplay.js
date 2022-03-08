@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Weather(props) {
+export default function WeatherDisplay(props) {
   return (
     <div className="WeatherDisplay">
       <div className="CityDetails">

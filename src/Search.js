@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import WeatherDisplay from "./WeatherDisplay";
 
-export default function Search(props) {
+import "./Search.css";
+
+export default function Search() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
   const [loaded, setLoaded] = useState(false);
@@ -33,14 +35,22 @@ export default function Search(props) {
   }
 
   let searchBar = (
-    <form className="Search" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Type a city.."
-        onChange={updateCity}
-      ></input>
-      <input type="submit" value="Search"></input>
-    </form>
+    <div className="row align-items-center">
+      <form className="Search" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Type a city.."
+          onChange={updateCity}
+          autoFocus
+        ></input>
+        <button type="button" className="btn btn-dark">
+          Search
+        </button>
+        <button type="button" className="btn btn-secondary">
+          Current
+        </button>
+      </form>
+    </div>
   );
 
   if (loaded) {
@@ -51,6 +61,11 @@ export default function Search(props) {
       </div>
     );
   } else {
-    return <div>{searchBar}</div>;
+    return (
+      <div>
+        {searchBar}
+        <WeatherDisplay city={city} weather={weather} />
+      </div>
+    );
   }
 }
