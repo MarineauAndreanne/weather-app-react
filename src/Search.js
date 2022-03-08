@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
+import WeatherDisplay from "./WeatherDisplay";
 
-export default function Search() {
+export default function Search(props) {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
 
@@ -29,7 +30,7 @@ export default function Search() {
     console.log(city);
   }
 
-  return (
+  let search = (
     <form className="Search" onSubmit={handleSubmit}>
       <input
         type="text"
@@ -38,5 +39,11 @@ export default function Search() {
       ></input>
       <input type="submit" value="Search"></input>
     </form>
+  );
+  return (
+    <div>
+      {search}
+      <WeatherDisplay city={city} weather={weather} />
+    </div>
   );
 }
