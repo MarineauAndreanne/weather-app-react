@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { SpinnerComponent } from "react-element-spinner";
 
 export default function Weather(props) {
   function showWeather(response) {
@@ -14,5 +13,5 @@ export default function Weather(props) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
 
-  return <SpinnerComponent loading={true} position="global" color="orange" />;
+  return <h4>Hello from Weather</h4>;
 }
