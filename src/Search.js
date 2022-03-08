@@ -5,8 +5,10 @@ import WeatherDisplay from "./WeatherDisplay";
 export default function Search(props) {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
+  const [loaded, setLoaded] = useState(false);
 
   function fetchWeather(response) {
+    setLoaded(true);
     setWeather({
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
@@ -30,7 +32,7 @@ export default function Search(props) {
     console.log(city);
   }
 
-  let search = (
+  let searchBar = (
     <form className="Search" onSubmit={handleSubmit}>
       <input
         type="text"
@@ -40,10 +42,15 @@ export default function Search(props) {
       <input type="submit" value="Search"></input>
     </form>
   );
-  return (
-    <div>
-      {search}
-      <WeatherDisplay city={city} weather={weather} />
-    </div>
-  );
+
+  if (loaded) {
+    return (
+      <div>
+        {searchBar}
+        <WeatherDisplay city={city} weather={weather} />
+      </div>
+    );
+  } else {
+    return <div>{searchBar}</div>;
+  }
 }
