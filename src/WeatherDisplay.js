@@ -1,24 +1,31 @@
 import React from "react";
 
+import "./WeatherDisplay.css";
+
 export default function WeatherDisplay(props) {
   return (
     <div className="WeatherDisplay">
       <div className="CityDetails">
         <ul>
-          <li>{props.city}</li>
-          <li>Tuesday 13:06 fake data</li>
-          <li>{props.weather.description}</li>
+          <li className="CityName">{props.city}</li>
+          <li className="DateTime">Tuesday 13:06 fake data</li>
+          <li className="WeatherDescription">{props.weather.description}</li>
         </ul>
       </div>
-      <div className="WeatherDetails">
-        <ul>
-          <li>
-            <img src={props.weather.emoji} alt={props.weather.description} />
-          </li>
-          <li>{Math.round(props.weather.temperature)}°C</li>
-          <li>Humidity: {Math.round(props.weather.humidity)}%</li>
-          <li>Wind: {Math.round(props.weather.wind)} km/h</li>
-        </ul>
+      <div className="container">
+        <div className="row WeatherDetails">
+          <div className="col-sm-6">
+            <div className="WeatherIcon">
+              <img src={props.weather.emoji} alt={props.weather.description} />
+            </div>
+            <div className="Temperature">
+              {Math.round(props.weather.temperature)}°C
+            </div>
+          </div>
+          <div className="col-sm-6"></div>
+          <div>Humidity: {Math.round(props.weather.humidity)}%</div>
+          <div>Wind: {Math.round(props.weather.wind)} km/h</div>
+        </div>
       </div>
     </div>
   );

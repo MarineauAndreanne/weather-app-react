@@ -1,0 +1,18 @@
+.WeatherDisplay .CityDetails ul {
+  font-size: 14px;
+  list-style: none;
+  margin: 10px 0;
+  padding-left: 0;
+  text-transform: capitalize;
+}
+
+.WeatherDisplay .CityDetails .CityName {
+  font-size: 25px;
+}
+
+.WeatherDisplay .WeatherDetails ul {
+  background-color: red;
+  font-size: 14px;
+  list-style: none;
+  padding-left: 0;
+}

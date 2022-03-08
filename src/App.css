@@ -1,8 +1,11 @@
 .App {
-  border: 1px solid black;
+  border: 1px solid #636b71;
   border-radius: 5px;
   font-family: sans-serif;
   margin: 35px;
+  min-width: 515px;
+  max-width: 700px;
+  opacity: 0.95;
   padding: 30px 25px;
   text-align: left;
 }
