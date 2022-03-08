@@ -14,5 +14,5 @@ export default function Weather(props) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
 
-  return <SpinnerComponent loading={true} position="global" />;
+  return <SpinnerComponent loading={true} position="global" color="orange" />;
 }
