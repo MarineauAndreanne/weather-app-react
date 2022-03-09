@@ -1,4 +1,5 @@
 import React from "react";
+import DateTime from "./DateTime";
 
 import "./WeatherDisplay.css";
 
@@ -8,12 +9,14 @@ export default function WeatherDisplay(props) {
       <div className="CityDetails">
         <ul>
           <li className="CityName">{props.city}</li>
-          <li className="DateTime">Tuesday 13:06 fake data</li>
+          <li className="DateTime">
+            <DateTime />
+          </li>
           <li className="WeatherDescription">{props.weather.description}</li>
         </ul>
       </div>
       <div className="container">
-        <div className="row align-items-top WeatherDetails">
+        <div className="row align-items-center WeatherDetails">
           <div className="col">
             <span className="WeatherIcon">
               <img src={props.weather.emoji} alt={props.weather.description} />
@@ -23,9 +26,10 @@ export default function WeatherDisplay(props) {
               <span className="Units">°C</span>
             </span>
           </div>
-          <div className="col"></div>
-          <div>Humidity: {Math.round(props.weather.humidity)}%</div>
-          <div>Wind: {Math.round(props.weather.wind)} km/h</div>
+          <div className="col">
+            <div>Humidity: {Math.round(props.weather.humidity)}%</div>
+            <div>Wind: {Math.round(props.weather.wind)} km/h</div>
+          </div>
         </div>
       </div>
     </div>

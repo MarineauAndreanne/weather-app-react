@@ -10,17 +10,15 @@
   font-size: 25px;
 }
 
-.WeatherDisplay .WeatherDetails ul {
+.WeatherDisplay .WeatherDetails .col {
   font-size: 14px;
-  list-style: none;
   padding-left: 0;
 }
 
-.WeatherDisplay .WeatherDetails .Temperature {
+.WeatherDisplay .WeatherDetails .col .Temperature {
   font-size: 50px;
 }
 
-.WeatherDisplay .WeatherDetails .Temperature .Units {
+.WeatherDisplay .Units {
   font-size: 20px;
-  margin-top: -25px;
 }

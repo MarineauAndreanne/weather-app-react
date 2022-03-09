@@ -80,12 +80,6 @@ export default function Search() {
       </div>
     );
   } else {
-    return (
-      <div>
-        {searchBar}
-        <WeatherDisplay city={city} weather={weather} />
-        <ForecastDisplay weather={weather} />
-      </div>
-    );
+    return <div>{searchBar}</div>;
   }
 }
