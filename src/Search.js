@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import WeatherDisplay from "./WeatherDisplay";
 import ForecastDisplay from "./ForecastDisplay";
+import { SpinnerComponent } from "react-element-spinner";
 
 import "./Search.css";
 
@@ -76,8 +77,9 @@ export default function Search() {
     );
   } else {
     return (
-      <div>
+      <div className="Loading">
         {searchBar}
+        <h3>Loading...</h3>
         {forecast}
       </div>
     );
