@@ -2,7 +2,7 @@
   border: 1px solid #636b71;
   border-radius: 5px;
   font-family: sans-serif;
-  margin: 35px 35px 5px 35px;
+  margin: 35px auto 5px auto;
   min-width: 600px;
   max-width: 700px;
   opacity: 0.95;
@@ -13,4 +13,14 @@
 .Signature {
   font-size: 10px;
   margin-left: 45px;
+}
+
+.Signature a {
+  color: #885df1;
+  text-decoration: none;
+}
+
+.Signature a:hover {
+  color: #6847bd;
+  text-decoration: none;
 }
