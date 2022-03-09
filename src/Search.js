@@ -24,18 +24,13 @@ export default function Search() {
   }
 
   function fetchForecastDetails(response) {
-    setForecast({
-      day: response.data.forecast.time.day,
-      eemoji: `http://openweathermap.org/img/wn/${response.data.forecast[0].icon}@2x.png`,
-      temperature: response.data.forecast.temperature.day,
-    });
-    console.log(response.data.forecast);
+    setForecast("hello");
   }
 
   function fetchForecastApi() {
     let apiKey = "5dbdc91948e1399dfc661396dfb08620";
     let units = "metric";
-    let apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=${apiKey}&units=${units}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(fetchForecastDetails);
   }
 
@@ -80,6 +75,11 @@ export default function Search() {
       </div>
     );
   } else {
-    return <div>{searchBar}</div>;
+    return (
+      <div>
+        {searchBar}
+        {forecast}
+      </div>
+    );
   }
 }
