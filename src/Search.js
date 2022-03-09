@@ -2,13 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import WeatherDisplay from "./WeatherDisplay";
 import ForecastDisplay from "./ForecastDisplay";
-import { SpinnerComponent } from "react-element-spinner";
 
 import "./Search.css";
 
 export default function Search() {
-  const [city, setCity] = useState("");
-  const [weather, setWeather] = useState("");
+  const [city, setCity] = useState("Lisbon");
+  const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState("");
   const [loaded, setLoaded] = useState(false);
 
