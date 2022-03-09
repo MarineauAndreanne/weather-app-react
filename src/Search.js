@@ -1,15 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
 import WeatherDisplay from "./WeatherDisplay";
+import ForecastDisplay from "./ForecastDisplay";
 
 import "./Search.css";
 
 export default function Search() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
+  const [forecast, setForecast] = useState("");
   const [loaded, setLoaded] = useState(false);
 
-  function fetchWeather(response) {
+  function fetchWeatherDetails(response) {
     setLoaded(true);
     setWeather({
       temperature: response.data.main.temp,
@@ -18,15 +20,31 @@ export default function Search() {
       wind: response.data.wind.speed,
       emoji: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
-    console.log(weather);
+    return fetchForecastApi(response);
   }
 
-  function handleSubmit(event) {
+  function fetchForecastDetails(response) {
+    setForecast({
+      day: response.data.forecast.time.day,
+      emoji: response.data.forecast.symbol.var,
+      temperature: response.data.forecast.temperature.day,
+    });
+    console.log(response.data.forecast);
+  }
+
+  function fetchForecastApi() {
+    let apiKey = "84cdefc9feb2d08fea733385f3bbaf66";
+    let units = "metric";
+    let apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=${apiKey}&units=${units}`;
+    axios.get(apiUrl).then(fetchForecastDetails);
+  }
+
+  function fetchWeatherApi(event) {
     event.preventDefault();
     let apiKey = "84cdefc9feb2d08fea733385f3bbaf66";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(fetchWeather);
+    axios.get(apiUrl).then(fetchWeatherDetails);
   }
 
   function updateCity(event) {
@@ -36,7 +54,7 @@ export default function Search() {
 
   let searchBar = (
     <div className="row align-items-center">
-      <form className="Search" onSubmit={handleSubmit}>
+      <form className="Search" onSubmit={fetchWeatherApi}>
         <input
           type="text"
           placeholder="Type a city.."
@@ -58,6 +76,7 @@ export default function Search() {
       <div>
         {searchBar}
         <WeatherDisplay city={city} weather={weather} />
+        <ForecastDisplay forecast={forecast} />
       </div>
     );
   } else {
@@ -65,6 +84,7 @@ export default function Search() {
       <div>
         {searchBar}
         <WeatherDisplay city={city} weather={weather} />
+        <ForecastDisplay forecast={forecast} />
       </div>
     );
   }
