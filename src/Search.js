@@ -26,14 +26,14 @@ export default function Search() {
   function fetchForecastDetails(response) {
     setForecast({
       day: response.data.forecast.time.day,
-      emoji: response.data.forecast.symbol.var,
+      eemoji: `http://openweathermap.org/img/wn/${response.data.forecast[0].icon}@2x.png`,
       temperature: response.data.forecast.temperature.day,
     });
     console.log(response.data.forecast);
   }
 
   function fetchForecastApi() {
-    let apiKey = "84cdefc9feb2d08fea733385f3bbaf66";
+    let apiKey = "5dbdc91948e1399dfc661396dfb08620";
     let units = "metric";
     let apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=5&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(fetchForecastDetails);
@@ -41,7 +41,7 @@ export default function Search() {
 
   function fetchWeatherApi(event) {
     event.preventDefault();
-    let apiKey = "84cdefc9feb2d08fea733385f3bbaf66";
+    let apiKey = "5dbdc91948e1399dfc661396dfb08620";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(fetchWeatherDetails);
@@ -76,7 +76,7 @@ export default function Search() {
       <div>
         {searchBar}
         <WeatherDisplay city={city} weather={weather} />
-        <ForecastDisplay forecast={forecast} />
+        <ForecastDisplay weather={weather} />
       </div>
     );
   } else {
@@ -84,7 +84,7 @@ export default function Search() {
       <div>
         {searchBar}
         <WeatherDisplay city={city} weather={weather} />
-        <ForecastDisplay forecast={forecast} />
+        <ForecastDisplay weather={weather} />
       </div>
     );
   }

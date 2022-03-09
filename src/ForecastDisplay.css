@@ -1,0 +1,16 @@
+.ForecastDisplay {
+  text-align: center;
+}
+
+.ForecastDisplay .row {
+  margin-top: 25px;
+}
+
+.ForecastDisplay ul {
+  font-size: 12px;
+  list-style: none;
+}
+
+.ForecastDisplay img {
+  width: 65px;
+}

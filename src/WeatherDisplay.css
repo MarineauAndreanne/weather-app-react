@@ -11,8 +11,16 @@
 }
 
 .WeatherDisplay .WeatherDetails ul {
-  background-color: red;
   font-size: 14px;
   list-style: none;
   padding-left: 0;
+}
+
+.WeatherDisplay .WeatherDetails .Temperature {
+  font-size: 50px;
+}
+
+.WeatherDisplay .WeatherDetails .Temperature .Units {
+  font-size: 20px;
+  margin-top: -25px;
 }
