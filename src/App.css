@@ -1,13 +1,16 @@
-.App {
-  border: 1px solid #636b71;
-  border-radius: 5px;
+.container {
   font-family: sans-serif;
   margin: 35px auto 5px auto;
   min-width: 600px;
   max-width: 700px;
   opacity: 0.95;
-  padding: 30px 25px;
   text-align: left;
+}
+.App {
+  border: 1px solid #636b71;
+  border-radius: 5px;
+  height: 315px;
+  padding: 30px 25px;
 }
 
 .Signature {
