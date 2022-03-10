@@ -15,6 +15,19 @@
   padding-left: 0;
 }
 
+.WeatherDisplay .WeatherDetails .Units {
+  margin-left: 5px;
+}
+
+.WeatherDisplay .WeatherDetails a {
+  color: #885df1;
+  text-decoration: none;
+}
+
+.WeatherDisplay .WeatherDetails a:hover {
+  color: #603dba;
+}
+
 .WeatherDisplay .WeatherDetails canvas {
   float: left;
   margin: 18px 10px 0 10px;
