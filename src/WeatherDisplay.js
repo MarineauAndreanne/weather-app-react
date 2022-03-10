@@ -6,14 +6,13 @@ import Temperature from "./Temperature";
 import "./WeatherDisplay.css";
 
 export default function WeatherDisplay(props) {
-  let date = props.weather.date;
   return (
     <div className="WeatherDisplay">
       <div className="CityDetails">
         <ul>
           <li className="CityName">{props.weather.city}</li>
           <li className="DateTime">
-            <DateTime date={date} />
+            <DateTime />
           </li>
           <li className="WeatherDescription">{props.weather.description}</li>
         </ul>
