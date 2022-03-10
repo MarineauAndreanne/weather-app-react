@@ -8,7 +8,7 @@ export default function WeatherDisplay(props) {
     <div className="WeatherDisplay">
       <div className="CityDetails">
         <ul>
-          <li className="CityName">{props.city}</li>
+          <li className="CityName">{props.weather.city}</li>
           <li className="DateTime">
             <DateTime date={props.weather.date} />
           </li>
