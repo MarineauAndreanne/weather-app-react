@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 export default function DateTime(props) {
   // let days = [
@@ -24,5 +24,5 @@ export default function DateTime(props) {
   //     {day} {hours}:{minutes}
   //   </div>
   // );
-  return "Fix date and time";
+  return `Fix date and time`;
 }
