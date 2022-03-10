@@ -15,9 +15,9 @@
   padding-left: 0;
 }
 
-.WeatherDisplay .WeatherDetails img {
+.WeatherDisplay .WeatherDetails canvas {
   float: left;
-  width: 100px;
+  margin: 18px 10px 0 10px;
 }
 
 .WeatherDisplay .WeatherDetails .col .Temperature {
