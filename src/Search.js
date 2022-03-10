@@ -6,21 +6,22 @@ import ForecastDisplay from "./ForecastDisplay";
 import "./Search.css";
 
 export default function Search() {
-  const [city, setCity] = useState("Lisbon");
-  const [weather, setWeather] = useState({});
+  const [city, setCity] = useState("");
+  const [weatherData, setWeatherData] = useState({});
   const [forecast, setForecast] = useState("");
   const [loaded, setLoaded] = useState(false);
 
   function fetchWeatherDetails(response) {
     setLoaded(true);
-    setWeather({
-      temperature: response.data.main.temp,
+    setWeatherData({
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
       emoji: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      humidity: response.data.main.humidity,
+      temperature: response.data.main.temp,
+      wind: response.data.wind.speed,
     });
-    return fetchForecastApi(response);
+    // return fetchForecastApi(response);
   }
 
   function fetchForecastDetails(response) {
@@ -70,8 +71,8 @@ export default function Search() {
     return (
       <div>
         {searchBar}
-        <WeatherDisplay city={city} weather={weather} />
-        <ForecastDisplay weather={weather} />
+        <WeatherDisplay city={city} weather={weatherData} />
+        <ForecastDisplay weather={weatherData} />
       </div>
     );
   } else {

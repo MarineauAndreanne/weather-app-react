@@ -10,7 +10,7 @@ export default function WeatherDisplay(props) {
         <ul>
           <li className="CityName">{props.city}</li>
           <li className="DateTime">
-            <DateTime />
+            <DateTime date={props.weather.date} />
           </li>
           <li className="WeatherDescription">{props.weather.description}</li>
         </ul>
