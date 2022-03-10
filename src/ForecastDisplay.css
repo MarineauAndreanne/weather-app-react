@@ -1,16 +1,21 @@
 .ForecastDisplay {
   text-align: center;
+  font-size: 14px;
 }
 
 .ForecastDisplay .row {
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .ForecastDisplay ul {
-  font-size: 12px;
   list-style: none;
 }
 
-.ForecastDisplay img {
-  width: 65px;
+.ForecastDisplay .WeatherForecastIcon {
+  margin: 7px 0;
+}
+
+.ForecastDisplay .WeatherForecastMinTemperature {
+  margin-left: 5px;
+  opacity: 0.65;
 }

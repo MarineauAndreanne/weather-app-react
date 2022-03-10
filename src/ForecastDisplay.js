@@ -1,56 +1,23 @@
 import React from "react";
 
+import WeatherIcon from "./WeatherIcon";
+
 import "./ForecastDisplay.css";
 
-export default function ForecastDisplay(props) {
+export default function ForecastDisplay() {
   return (
-    <div className="container ForecastDisplay">
+    <div className="ForecastDisplay">
       <div className="row align-items-center">
-        <ul className="col-sm align-self-center">
-          <li>MON</li>
-          <li>
-            <div className="WeatherIcon">
-              <img src={props.weather.emoji} alt={props.weather.description} />
-            </div>
-          </li>
-          <li>22°C</li>
-        </ul>
-        <ul className="col-sm">
-          <li>MON</li>
-          <li>
-            <div className="WeatherIcon">
-              <img src={props.weather.emoji} alt={props.weather.description} />
-            </div>
-          </li>
-          <li>22°C</li>
-        </ul>
-        <ul className="col-sm">
-          <li>MON</li>
-          <li>
-            <div className="WeatherIcon">
-              <img src={props.weather.emoji} alt={props.weather.description} />
-            </div>
-          </li>
-          <li>22°C</li>
-        </ul>
-        <ul className="col-sm">
-          <li>MON</li>
-          <li>
-            <div className="WeatherIcon">
-              <img src={props.weather.emoji} alt={props.weather.description} />
-            </div>
-          </li>
-          <li>22°C</li>
-        </ul>
-        <ul className="col-sm">
-          <li>MON</li>
-          <li>
-            <div className="WeatherIcon">
-              <img src={props.weather.emoji} alt={props.weather.description} />
-            </div>
-          </li>
-          <li>22°C</li>
-        </ul>
+        <div className="col align-self-center">
+          <div className="WeatherForecastDay">MON</div>
+          <div className="WeatherForecastIcon">
+            <WeatherIcon iconCode="01d" size={30} />
+          </div>
+          <div className="WeatherForecastTemperatures">
+            <span className="WeatherForecastMaxTemperature">15°</span>
+            <span className="WeatherForecastMinTemperature">10°</span>
+          </div>
+        </div>
       </div>
     </div>
   );
