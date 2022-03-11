@@ -14,6 +14,7 @@ export default function Search() {
     setLoaded(true);
     setWeatherData({
       city: response.data.name,
+      coords: response.data.coord,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       humidity: response.data.main.humidity,
@@ -23,7 +24,7 @@ export default function Search() {
   }
 
   function search() {
-    let apiKey = "5dbdc91948e1399dfc661396dfb08620";
+    let apiKey = "c43c775fd000c0602bcc0f2b55575af9";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
     axios.get(apiUrl).then(fetchWeatherDetails);
@@ -62,7 +63,7 @@ export default function Search() {
       <div>
         {searchBar}
         <WeatherDisplay weather={weatherData} />
-        <ForecastDisplay />
+        <ForecastDisplay coords={weatherData.coords} />
       </div>
     );
   } else {
