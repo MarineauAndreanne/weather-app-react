@@ -35,6 +35,10 @@ export default function Search() {
     search();
   }
 
+  function fetchCurrentLocation() {
+    return null;
+  }
+
   function updateCity(event) {
     setCity(event.target.value);
   }
@@ -48,10 +52,14 @@ export default function Search() {
           onChange={updateCity}
           autoFocus
         ></input>
-        <button type="button" className="btn btn-dark">
+        <button type="button" className="btn btn-dark" onClick={handleSubmit}>
           Search
         </button>
-        <button type="button" className="btn btn-secondary">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={fetchCurrentLocation}
+        >
           Current
         </button>
       </form>

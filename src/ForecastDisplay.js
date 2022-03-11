@@ -9,6 +9,10 @@ export default function ForecastDisplay(props) {
   const [loaded, setLoaded] = useState(false);
   const [forecast, setForecast] = useState(null);
 
+  // useEffect(() => {
+  //   setLoaded(false);
+  // }, [props.coords]);
+
   function handleResponse(response) {
     setForecast(response.data.daily);
     setLoaded(true);
