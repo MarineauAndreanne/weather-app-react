@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="container">
       <div className="App">
-        <Search />
+        <Search defaultCity="Lisbon" />
       </div>
       <small className="Signature">
         <a

@@ -1,17 +1,21 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WeatherDisplay from "./WeatherDisplay";
 import ForecastDisplay from "./ForecastDisplay";
+import { delay } from "./utils";
 
 import "./Search.css";
 
-export default function Search() {
-  const [city, setCity] = useState("Lisbon");
+export default function Search(props) {
+  const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setWeatherData] = useState({});
-  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    search();
+  }, []);
 
   function fetchWeatherDetails(response) {
-    setLoaded(true);
     setWeatherData({
       city: response.data.name,
       coords: response.data.coord,
@@ -21,13 +25,20 @@ export default function Search() {
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
     });
+    setLoading(false);
   }
 
-  function search() {
+  async function search() {
+    setLoading(true);
+
     let apiKey = "c43c775fd000c0602bcc0f2b55575af9";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(fetchWeatherDetails);
+    let response = await axios.get(apiUrl);
+
+    // await delay(1500);
+
+    fetchWeatherDetails(response);
   }
 
   function handleSubmit(event) {
@@ -35,13 +46,17 @@ export default function Search() {
     search();
   }
 
-  function showCurrentLocation(position) {
+  async function showCurrentLocation(position) {
+    setLoading(true);
+
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
     let apiKey = "c43c775fd000c0602bcc0f2b55575af9";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
-    axios.get(apiUrl).then(fetchWeatherDetails);
+    let response = await axios.get(apiUrl);
+
+    fetchWeatherDetails(response);
   }
 
   function fetchCurrentLocation(event) {
@@ -62,9 +77,7 @@ export default function Search() {
           onChange={updateCity}
           autoFocus
         ></input>
-        <button type="button" className="btn btn-dark" onClick={handleSubmit}>
-          Search
-        </button>
+        <button className="btn btn-dark">Search</button>
         <button
           type="button"
           className="btn btn-secondary"
@@ -76,21 +89,17 @@ export default function Search() {
     </div>
   );
 
-  if (loaded) {
-    return (
-      <div>
-        {searchBar}
-        <WeatherDisplay weather={weatherData} />
-        <ForecastDisplay coords={weatherData.coords} />
-      </div>
-    );
-  } else {
-    search();
-    return (
-      <div className="Loading">
-        {searchBar}
-        <h3>Loading...</h3>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {searchBar}
+      {loading ? (
+        <h3 class="Loading">Loading...</h3>
+      ) : (
+        <>
+          <WeatherDisplay weather={weatherData} />
+          <ForecastDisplay coords={weatherData.coords} />
+        </>
+      )}
+    </div>
+  );
 }
