@@ -1,5 +1,6 @@
 .container {
   font-family: sans-serif;
+
   margin: 35px auto 5px auto;
   opacity: 0.9;
   text-align: left;
@@ -8,6 +9,7 @@
   border: 1px solid #636b71;
   border-radius: 5px;
   height: 418px;
+  margin: 0 auto;
   min-width: 500px;
   max-width: 600px;
   padding: 30px 25px;
@@ -15,6 +17,9 @@
 
 .Signature {
   font-size: 10px;
+  display: block;
+  margin: 10px;
+  text-align: center;
 }
 
 .Signature a {
