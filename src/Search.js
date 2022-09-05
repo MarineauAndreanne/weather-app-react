@@ -1,19 +1,18 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import WeatherDisplay from "./WeatherDisplay";
-import ForecastDisplay from "./ForecastDisplay";
-import { delay } from "./utils";
+import axios from "axios"
+import React, { useState, useEffect } from "react"
+import WeatherDisplay from "./WeatherDisplay"
+import ForecastDisplay from "./ForecastDisplay"
 
-import "./Search.css";
+import "./Search.css"
 
 export default function Search(props) {
-  const [city, setCity] = useState(props.defaultCity);
-  const [weatherData, setWeatherData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [city, setCity] = useState(props.defaultCity)
+  const [weatherData, setWeatherData] = useState({})
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    search();
-  }, []);
+    search()
+  }, [])
 
   function fetchWeatherDetails(response) {
     setWeatherData({
@@ -24,48 +23,48 @@ export default function Search(props) {
       humidity: response.data.main.humidity,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
-    });
-    setLoading(false);
+    })
+    setLoading(false)
   }
 
   async function search() {
-    setLoading(true);
+    setLoading(true)
 
-    let apiKey = "c43c775fd000c0602bcc0f2b55575af9";
-    let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-    let response = await axios.get(apiUrl);
+    let apiKey = "c43c775fd000c0602bcc0f2b55575af9"
+    let units = "metric"
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`
+    let response = await axios.get(apiUrl)
 
     // await delay(1500);
 
-    fetchWeatherDetails(response);
+    fetchWeatherDetails(response)
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
-    search();
+    event.preventDefault()
+    search()
   }
 
   async function showCurrentLocation(position) {
-    setLoading(true);
+    setLoading(true)
 
-    let lat = position.coords.latitude;
-    let long = position.coords.longitude;
-    let apiKey = "c43c775fd000c0602bcc0f2b55575af9";
-    let units = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
-    let response = await axios.get(apiUrl);
+    let lat = position.coords.latitude
+    let long = position.coords.longitude
+    let apiKey = "c43c775fd000c0602bcc0f2b55575af9"
+    let units = "metric"
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`
+    let response = await axios.get(apiUrl)
 
-    fetchWeatherDetails(response);
+    fetchWeatherDetails(response)
   }
 
   function fetchCurrentLocation(event) {
-    event.preventDefault();
-    navigator.geolocation.getCurrentPosition(showCurrentLocation);
+    event.preventDefault()
+    navigator.geolocation.getCurrentPosition(showCurrentLocation)
   }
 
   function updateCity(event) {
-    setCity(event.target.value);
+    setCity(event.target.value)
   }
 
   let searchBar = (
@@ -87,7 +86,7 @@ export default function Search(props) {
         </button>
       </form>
     </div>
-  );
+  )
 
   return (
     <div>
@@ -101,5 +100,5 @@ export default function Search(props) {
         </>
       )}
     </div>
-  );
+  )
 }
